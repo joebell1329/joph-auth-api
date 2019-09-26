@@ -2,5 +2,14 @@
   "name": "joph-auth-api",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "mongodb": "^3.3.2",
+    "restify": "^8.4.0"
+  },
+  "devDependencies": {
+    "@types/mongodb": "^3.3.3",
+    "@types/restify": "^8.4.0",
+    "typescript": "^3.6.3"
+  }
 }
