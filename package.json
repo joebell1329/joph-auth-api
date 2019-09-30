@@ -13,11 +13,13 @@
     "mongodb": "^3.3.2",
     "reflect-metadata": "^0.1.13",
     "restify": "^8.4.0",
+    "restify-cors-middleware": "^1.1.1",
     "tsyringe": "^3.4.0"
   },
   "devDependencies": {
     "@types/mongodb": "^3.3.3",
     "@types/restify": "^8.4.0",
+    "@types/restify-cors-middleware": "^1.0.1",
     "rimraf": "^3.0.0",
     "typescript": "^3.6.3"
   }
