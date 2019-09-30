@@ -13,10 +13,11 @@ export class VaultController {
 
   public register() {
     this.jauthServer._server.post(`${this.baseUrl}`, (req, res, next) => this.createVault(req, res, next));
-    this.jauthServer._server.get(`${this.baseUrl}/:id`, (req, res, next) => this.getVaultById(req, res, next));
+    this.jauthServer._server.get(`${this.baseUrl}`, (req, res, next) => this.getVaultForUser(req, res, next));
   }
 
   private createVault(req: Request, res: Response, next: Next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     const vaultCollection = this.jauthDb._db.collection('vaults');
     vaultCollection.insertOne(req.body, (err, result) => {
       if (err) {
@@ -27,10 +28,10 @@ export class VaultController {
     });
   }
 
-  private getVaultById(req: Request, res: Response, next: Next) {
+  private getVaultForUser(req: Request, res: Response, next: Next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     const vaultCollection = this.jauthDb._db.collection('vaults');
-    vaultCollection.findOne({ _id: new ObjectId(req.params.id) }, (err, result) => {
+    vaultCollection.findOne({ email: req.query.email }, (err, result) => {
       if (err) {
         res.status(500);
         res.send();

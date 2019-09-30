@@ -1,6 +1,7 @@
 import { createServer, plugins, Server } from 'restify';
 import { singleton } from 'tsyringe';
 import jsonBodyParser = plugins.jsonBodyParser;
+import queryParser = plugins.queryParser;
 
 @singleton()
 export class JAuthServer {
@@ -10,6 +11,7 @@ export class JAuthServer {
   constructor() {
     this._server = createServer();
     this._server.use(jsonBodyParser());
+    this._server.use(queryParser());
   }
 
   public start() {
